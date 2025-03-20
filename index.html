@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Akademik Mahasiswa</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      #sidebar {
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        position: fixed;
+        height: 100vh;
+        width: 250px;
+        background-color: #212529;
+        color: white;
+        top: 0;
+        left: 0;
+        z-index: 1040;
+      }
+      #sidebar.show {
+        transform: translateX(0);
+      }
+      main {
+        margin-left: 0;
+        transition: margin-left 0.3s ease-in-out;
+      }
+      main.shifted {
+        margin-left: 250px;
+      }
+      p {
+        line-height: 6px;
+      }
+      .biodata-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .biodata-container img {
+        width: 128px;
+        height: 128px;
+      }
+      .fixed-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1050;
+      }
+      footer {
+        position: relative;
+        z-index: 1050;
+      }
+      button:active {
+        scale: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+      <div class="container-fluid">
+        <button class="btn btn-outline-dark" onclick="toggleSidebar()">Menu</button>
+        <h2 class="mx-auto">Data Akademik Mahasiswa</h2>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebar" class="bg-dark text-white p-3">
+          <button class="btn btn-outline-warning w-100 mb-2" style="margin-top: 60px">Biodata</button>
+          <button class="btn btn-outline-warning w-100 mb-2" onclick="scrollToSection('mata-kuliah')">Mata Kuliah</button>
+          <button class="btn btn-outline-warning w-100 mb-2" onclick="scrollToSection('krs')">KRS</button>
+        </nav>
+        <main class="px-md-4 py-3" style=" margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <div id="biodata" class="card p-3 mb-3">
+            <div class="biodata-container">
+              <div>
+                <h5>Biodata</h5>
+                <p>Nama: Siregar Simanjuntak Sinaga</p>
+                <p>NIM: 245150400111013</p>
+                <p>Program Studi: Sistem Informasi</p>
+                <p>Alamat: Jakarta, Jl. Simanjuntak 20</p>
+              </div>
+              <img src="https://placehold.co/128x128" class="rounded-circle" alt="Foto Mahasiswa"/>
+            </div>
+          </div>
+          <div id="mata-kuliah" class="card p-3 mb-3">
+            <h5>Mata Kuliah</h5>
+            <table class="table table-bordered table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>Kode</th>
+                  <th>Nama Mata Kuliah</th>
+                  <th>SKS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SI101</td>
+                  <td>Desain Antar Muka Pengguna</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>SI102</td>
+                  <td>Pemrograman Lanjut</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>SI103</td>
+                  <td>Pemrograman Web</td>
+                  <td>3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="krs" class="card p-3 mb-3">
+            <h5>KRS (Kartu Rencana Studi)</h5>
+            <ul class="list-group mb-3">
+              <li class="list-group-item">Desain Antar Muka Pengguna (SI101)</li>
+              <li class="list-group-item">Pemrograman Lanjut (SI102)</li>
+              <li class="list-group-item">Pemrograman Web (SI103)</li>
+            </ul>
+            <button class="btn btn-warning" style="max-width: 150px;">Cetak KRS</button>
+          </div>
+        </main>
+      </div>
+    </div>
+    <footer class="bg-warning text-center py-2">Footer</footer>
+
+    <script>
+      function toggleSidebar() {
+        let sidebar = document.getElementById("sidebar");
+        let main = document.querySelector("main");
+        sidebar.classList.toggle("show");
+        main.classList.toggle("shifted");
+      }
+      function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
